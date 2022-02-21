@@ -9,21 +9,21 @@
 }
 
 .nav{
-    padding: 4px 8px;
+    padding: 28px 0px;
     background-color: rgb(169, 16, 5);
 }
 
 .nav h1{
     color: rgb(236, 236, 236);
-    font-size: 24px;
+    font-size: 32px;
     text-align: center;
 }
 
 .logo-div {
-    width: 240px;
+    width: 280px;
     margin: auto;
-    margin-top: 10px;
-    margin-bottom: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .logo-div img {
@@ -31,5 +31,69 @@
 }
 
 .contenido {
-    
+    text-align: center;
+}
+
+.boton {
+    padding: 18px 32px;
+    font-size: 20px;
+    font-weight: 800;
+    color: rgb(169, 16, 5);
+    border:none;
+    box-shadow: 2px 2px 3px rgb(141, 140, 140);
+    border-radius: 10px;
+    background-color:rgb(255, 190, 110);
+    margin:5px;
+}
+
+.boton:hover{
+    border:none;
+    background-color: rgb(252, 202, 142);
+    color: rgb(170, 47, 38);
+    transform: scale(1.04);
+}
+
+.div-consulta input {
+    padding: 18px 54px;
+    margin-top: 24px;
+}
+
+/*-------------CSS TABLA----------*/
+
+.div-boton-opciones{
+    text-align: center;
+}
+
+.boton-opciones{
+    padding: 10px 72px;
+    font-size: 20px;
+    font-weight: 800;
+    color: rgb(169, 16, 5);
+    border:none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color:rgb(255, 190, 110);
+}
+
+.tarjeta-evento {
+    margin: 20px;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: rgb(69, 33, 233);
+    color:rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+}
+
+.tarjeta-evento-cartel {
+    padding: 18px 12px;
+    margin: 0px 20px;
+    font-size: 22px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.tarjeta-evento-info {
+    padding: 5px;
+    font-size: 18px;
 }
