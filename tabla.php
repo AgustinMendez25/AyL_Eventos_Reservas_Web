@@ -15,31 +15,27 @@
     <!--CSS-->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <!--JS-->
+    <script src="assets/js/coloresTarjeta.js"></script>
+
 </head>
 
-<body>    
+<body>   
+
     <div class="contenedor">
         <div class="nav">
             <h1>A&L Eventos Reservas</h1>
         </div>
         <div class="div-boton-opciones">
-            <button class="boton-opciones">Menú</button>
+            <button id="boton-opciones" class="boton-opciones">Menú</button>
+        </div>
+        <div id="menu" class="div-menu">
+            <button id="btn-agregar" class="btn-opt" hidden>Agregar</button>
+            <button id="btn-filtrar" class="btn-opt" hidden>Filtrar</button>
+            <button id="btn-eliminar" class="btn-opt" hidden>Eliminar</button>
+            <button id="btn-cerrarMenu" class="btn-opt" hidden>-----</button>
         </div>
         <div class="contenedor-eventos">
-            
-            <script>
-                const definirColorTarjeta = (fecha, id)=>{
-                    const tarjeta = document.getElementById(id);
-                    const actual = new Date().toLocaleDateString();
-
-
-/*
-                    if (fecha > actual) tarjeta.style.backgroundColor = 'red'
-                    else if (fecha < actual) tarjeta.style.backgroundColor = 'green'
-                    else tarjeta.style.backgroundColor = 'blue';*/
-                }
-            </script>
-
             <?php
                 $query = "SELECT DATE_FORMAT(fecha, '%d/%m/%Y') as fecha,idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio from reserva";
                 $envio = $conexion->query($query);
@@ -64,15 +60,14 @@
                 </div>
             </div>
             <script>
-                
                 definirColorTarjeta('<?php echo $row['fecha']; ?>','tarjeta-evento-<?php echo $row['idReserva']?>')
             </script>
             <?php } ?>
         </div>
     </div>
 
-    <!--<script src="assets/js/main.js"></script>-->
-
+    <script src="assets/js/main.js"></script>
+    
 </body>
 
 </html>

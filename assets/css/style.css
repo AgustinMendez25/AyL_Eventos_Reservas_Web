@@ -65,7 +65,7 @@
 }
 
 .boton-opciones{
-    padding: 10px 72px;
+    padding: 10px 100px;
     font-size: 20px;
     font-weight: 800;
     color: rgb(169, 16, 5);
@@ -96,4 +96,24 @@
 .tarjeta-evento-info {
     padding: 5px;
     font-size: 18px;
+}
+
+.div-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-opt {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    color: rgb(169, 16, 5);
+    border:none;
+    background-color:rgb(255, 190, 110);
+}
+
+#btn-cerrarMenu {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 3px;
 }
