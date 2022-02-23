@@ -26,15 +26,15 @@
         <div class="nav">
             <h1>A&L Eventos Reservas</h1>
         </div>
-        <div class="div-boton-opciones">
-            <button id="boton-opciones" class="boton-opciones">Menú</button>
+        <div class="contenedor-menu">
+            <div id="menu" class="div-menu">
+                <button id="btn-agregar" class="btn-opt">Agregar</button>
+                <button id="btn-filtrar" class="btn-opt">Filtrar</button>
+                <button id="btn-eliminar" class="btn-opt">Eliminar</button>
+                <button id="btn-menu" class="btn-opt">Menú</button>
+            </div>
         </div>
-        <div id="menu" class="div-menu">
-            <button id="btn-agregar" class="btn-opt" hidden>Agregar</button>
-            <button id="btn-filtrar" class="btn-opt" hidden>Filtrar</button>
-            <button id="btn-eliminar" class="btn-opt" hidden>Eliminar</button>
-            <button id="btn-cerrarMenu" class="btn-opt" hidden>-----</button>
-        </div>
+        <div id="separador"></div>
         <div class="contenedor-eventos">
             <?php
                 $query = "SELECT DATE_FORMAT(fecha, '%d/%m/%Y') as fecha,idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio from reserva";
@@ -66,7 +66,8 @@
         </div>
     </div>
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/menu.js"></script>
+    <script src="assets/js/abrirTarjetas.js"></script>
     
 </body>
 
