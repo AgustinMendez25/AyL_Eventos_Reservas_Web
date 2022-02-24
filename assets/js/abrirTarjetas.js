@@ -3,14 +3,17 @@
 //const separador = document.getElementById("separador");
 const tarjetas = document.querySelectorAll(".tarjeta-evento");
 
-/*
-for (const tarjeta in tarjetas) {
-    tarjetas[tarjeta].addEventListener("click",()=>{alert("hola")});
+
+for (let i = 1 ; i <= tarjetas.length ; i++) {
+    const id = "tarjeta-evento-" + i;
+    const tarjeta = document.getElementById(id);
+    tarjeta.addEventListener("click",()=>{
+        //
+    });
 }
 
-const tarjeta1 = document.getElementById("tarjeta-evento-1");
-tarjeta1.addEventListener("click",()=>{alert("hola")});
-*/
+
+
 
 /*
 let abierto = false;

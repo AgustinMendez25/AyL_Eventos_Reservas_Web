@@ -37,30 +37,49 @@
         <div id="separador"></div>
         <div class="contenedor-eventos">
             <?php
-                $query = "SELECT DATE_FORMAT(fecha, '%d/%m/%Y') as fecha,idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio from reserva";
+                $query = "select DATE_FORMAT(fecha, '%d/%m/%Y') as fecha,idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio,seña,nombre,mail,telefono from reserva r inner join cliente c on r.idCliente = c.idCliente";
                 $envio = $conexion->query($query);
                 while($row=$envio->fetch_assoc()){
             ?>
-            <div id="tarjeta-evento-<?php echo $row['idReserva']?>" class="tarjeta-evento">
-                <div class="tarjeta-evento-cartel">
-                    <h3>
-                        <?php echo $row['fecha']; ?>
-                    </h3>
+            <div id="tarjeta-evento-<?php echo $row['idReserva']?>" class="contenedor-tarjeta-evento">
+                <div class="tarjeta-evento">
+                    <div class="tarjeta-evento-cartel">
+                        <h3>
+                            <?php echo $row['fecha']; ?>
+                        </h3>
+                    </div>
+                    <div class="tarjeta-evento-info">
+                        <p>
+                            Localidad: <?php echo $row['localidad']; ?> <br>
+                            Adultos: <?php echo $row['cantAdultos']; ?> <br>
+                            Niños: <?php echo $row['cantChicos']; ?> <br>
+                            Dirección: <?php echo $row['direccion']; ?> <br>
+                            Horario: <?php echo $row['horario']; ?> <br>
+                            Hora: <?php echo $row['hora']; ?> <br>
+                        </p>
+                    </div>
                 </div>
-                <div class="tarjeta-evento-info">
-                    <p>
-                        Localidad: <?php echo $row['localidad']; ?> <br>
-                        Adultos: <?php echo $row['cantAdultos']; ?> <br>
-                        Niños: <?php echo $row['cantChicos']; ?> <br>
-                        Dirección: <?php echo $row['direccion']; ?> <br>
-                        Horario: <?php echo $row['horario']; ?> <br>
-                        Hora: <?php echo $row['hora']; ?> <br>
-                        Precio: <?php echo $row['precio']; ?> <br>
-                    </p>
+                <div id="tarjeta-evento-infoDesplegable">
+                    <div class="tarjeta-evento-infoCliente">
+                        <h5>Cliente</h5>
+                        <p>
+                            Nombre: <?php echo $row['nombre']; ?> <br>
+                            Mail: <?php echo $row['mail']; ?> <br>
+                            Telefono: <?php echo $row['telefono']; ?>
+                        </p>
+                    </div>
+                    <div class="tarjeta-evento-infoPrecios">
+                        <h5>Precios</h5>
+                        <p>
+                            Precio: $<?php echo $row['precio']; ?> <br>
+                            Seña: <span id="seña-evento-<?php echo $row['idReserva']?>"><?php echo $row['seña']; ?></span>
+                        </p>
+                    </div>
                 </div>
             </div>
             <script>
-                definirColorTarjeta('<?php echo $row['fecha']; ?>','tarjeta-evento-<?php echo $row['idReserva']?>')
+                definirColorTarjeta('<?php echo $row['fecha']; ?>','tarjeta-evento-<?php echo $row['idReserva']?>');
+                definirColorSeña('seña-evento-<?php echo $row['idReserva']?>');
             </script>
             <?php } ?>
         </div>
