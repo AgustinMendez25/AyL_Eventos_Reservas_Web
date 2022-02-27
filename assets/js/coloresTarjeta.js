@@ -26,3 +26,13 @@ const definirColorSeña = (id)=>{
     }
     else seña.style.color = 'green'
 }
+
+const setearDatosNulos = (id)=> {
+    const datos = document.getElementById(id).children;
+    if (datos[1].innerText == "Telefono:"){
+        datos[1].innerText = "Telefono: No registrado"
+    }
+    if (datos[2].innerText =="Mail:"){
+        datos[2].innerText = "Mail: No registrado"
+    }
+}

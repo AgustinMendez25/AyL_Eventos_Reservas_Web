@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+ul {
+    list-style: none;
+}
+
 .contenedor{
     background: linear-gradient(180deg, rgb(231, 230, 230), rgb(252, 252, 247));
     width: 100%;
@@ -108,10 +112,6 @@
     100% {height: 54px;}
 }
 
-#separador {
-    height: 54px;
-}
-
 /*-------------CSS TABLA TARJETAS----------*/
 
 .contenedor-tarjeta-evento {
@@ -119,9 +119,21 @@
 }
 
 .tarjeta-evento {
-    padding: 10px;
     border-radius: 12px;
     color:rgb(255, 255, 255);
+    position: relative;
+    z-index: 1;
+}
+
+.tarjeta-evento-h3 {
+    padding-top: 15px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.tarjeta-evento-contenido {
+    padding: 4px 10px 10px 10px;
     display: flex;
     align-items: center;
 }
@@ -136,22 +148,89 @@
 
 .tarjeta-evento-info {
     padding: 5px;
-    font-size: 18px;
+    font-size: 20px;
+}
+
+.tarjeta-evento-info li{
+    padding-bottom: 7px;
+}
+
+.contenedor-infoDesplegable {
+    display: flex;
+    justify-content: center;
 }
 
 #tarjeta-evento-infoDesplegable {
     display: flex;
-    justify-content: space-around;
     padding: 10px;
     background-color: rgb(134, 218, 123);
+    position: relative;
+    width: 75%;
+    top: -200px;
+    z-index: 0;
+    height: 0px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#tarjeta-evento-infoDesplegable li {
+    padding-bottom: 5px;
+}
+
+.tarjeta-evento-infoCliente {
+    width: 50%;
+}
+
+.tarjeta-evento-infoPrecios {
+    width: 50%;
 }
 
 #tarjeta-evento-infoDesplegable h5 {
     text-align: center;
-    font-size: 18px;
+    font-size: 21px;
     margin-bottom: 5px;
+}
+
+#tarjeta-evento-infoDesplegable ul {
+    font-size: 16px;
+    padding: 3px 7px;
 }
 
 .tarjeta-evento-infoPrecios span {
     font-weight: 800;
+}
+
+:root {
+    --alturaInfo: 170px;
+}
+
+@keyframes desplazarInfo {
+    30% {top:0px;height: var(--alturaInfo);}
+    100% {top:0px;height: var(--alturaInfo);}
+}
+@keyframes cerrarInfo {
+    0% {top:0px; height: var(--alturaInfo);}
+    50% {height: var(--alturaInfo);}
+    100% {top:-200px;height: 0px}
+}
+@keyframes aparecerTexto {
+    0% {opacity: 0;}
+    80% {opacity: 1;}
+    100% {opacity: 1;}
+}
+
+@media (min-width: 386px) { 
+    :root {
+        --alturaInfo: 150px;
+    }
+}
+@media (min-width: 540px) { 
+    :root {
+        --alturaInfo: 130px;
+    }
+}
+@media (min-width: 780px) { 
+    :root {
+        --alturaInfo: 98px;
+    }
 }
