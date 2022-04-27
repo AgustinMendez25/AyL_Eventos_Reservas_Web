@@ -14,6 +14,7 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
 
     <!--JS-->
     <script src="assets/js/coloresTarjeta.js"></script>
@@ -28,7 +29,7 @@
         </div>
         <div class="contenedor-menu">
             <div id="menu" class="div-menu">
-                <button id="btn-agregar" class="btn-opt">Agregar</button>
+                <button id="btn-agregar" class="btn-opt"><a href="agregarEvento.php">Agregar</a></button>
                 <button id="btn-filtrar" class="btn-opt">Filtrar</button>
                 <button id="btn-eliminar" class="btn-opt">Eliminar</button>
                 <button id="btn-menu" class="btn-opt">Menú</button>
@@ -68,7 +69,7 @@
                             <h5>Cliente</h5>
                             <ul id="ul-cliente-<?php echo $idRes?>">
                                 <li>Nombre: Hernesto <?php echo $row['nombre']; ?></li>
-                                <li>Telefono: 1111111111<?php echo $row['telefono']; ?></li>
+                                <li>Telefono: <?php echo $row['telefono']; ?></li>
                                 <li>Mail: aguslumendezmendez@gmail.com<?php echo $row['mail']; ?></li>
                             </ul>
                         </div>

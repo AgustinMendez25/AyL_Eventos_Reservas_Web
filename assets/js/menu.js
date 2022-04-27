@@ -28,13 +28,13 @@ menuOpt4.addEventListener("click", ()=>{
 })
 
 menuOpt1.addEventListener("click", ()=>{
-    alert("agregar registro");
+    //alert("agregar registro");
 })
 
 menuOpt2.addEventListener("click", ()=>{
-    alert("filtrar registros");
+    //alert("filtrar registros");
 })
 
 menuOpt3.addEventListener("click", ()=>{
-    alert("eliminar registro");
+    //alert("eliminar registro");
 })
