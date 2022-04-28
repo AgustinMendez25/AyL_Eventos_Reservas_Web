@@ -205,15 +205,17 @@ ul {
 
 .contenedor-divForm h4 {
     text-align: center;
-    font-size: 24px;
+    font-size: 26px;
     font-weight:400;
     padding: 12px;
+    text-shadow: 1px 1px 4px rgb(170, 170, 170);
 }
 
 .contenedor-divForm h5 {
     font-size: 20px;
     font-weight:400;
     margin-top: 20px;
+    text-shadow: 1px 1px 4px rgb(170, 170, 170);
 }
 
 .contenedor-divForm input, .contenedor-divForm select {
@@ -225,15 +227,28 @@ ul {
     text-align: center;
     background-color: var(--colorSecundario);
     color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.280);
     font-size: 17px;
     letter-spacing: 1px;
     font-weight: 400;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .contenedor-divForm input::placeholder {
     color: rgba(255, 255, 255, 0.753);
     font-size: 15px;
     letter-spacing: 1px;
+}
+
+.contenedor-divForm .contenedor-btnClienteExistente {
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-divForm #btnClientes {
+    text-decoration: underline;
+    padding: 8px;
+    color: rgb(143, 64, 64);
 }
 
 .div-dosHijos {
@@ -256,4 +271,106 @@ ul {
     color: rgba(0, 0, 0, 0.712);
     font-size: 14px;
     letter-spacing: 1px;
+}
+
+.contenedor-divForm .botonInput {
+    font-size: 18px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.678);
+}
+
+.contenedor-divForm #seña {
+    background-color: rgb(241, 31, 15);
+}
+
+.contenedor-divForm .div-acciones {
+    display: flex;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.contenedor-divForm .div-acciones a{
+    width: 35%;
+}
+
+.contenedor-divForm .div-acciones #btn-cancelar {
+    background-color: rgb(241, 31, 15);
+    width: 100%;
+}
+
+.contenedor-divForm .div-acciones #btn-agregar {
+    background-color: rgb(9, 136, 41);
+    width: 65%;
+    margin-left: 20px;
+}
+
+/*Modales*/
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal .modal-caja {
+    width: 300px;
+    height: 500px;
+    background-color: rgb(238, 236, 236);
+    border-radius: 10px;
+    transform: translateY(-30%);
+    transition: all 1.5s ease;
+}
+
+.modal .modal-caja .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--colorPrimario);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal .modal-caja .header h4 {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 2px black;
+}
+
+.modal .modal-caja .header label {
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.modal .modal-caja .contenido {
+    height: 440px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow-y: scroll;
+}
+
+.modal .modal-caja .contenido span {
+    display: inline-block;
+    width: 80%;
+    margin: 10px 0px;
+    border-radius: 10px;
+    padding: 8px;
+    text-align: center;
+    background-color: rgb(206, 203, 203);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.280);
+    font-size: 20px;
+    font-weight: 400;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }

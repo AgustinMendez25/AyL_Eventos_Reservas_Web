@@ -68,9 +68,9 @@
                         <div class="tarjeta-evento-infoCliente">
                             <h5>Cliente</h5>
                             <ul id="ul-cliente-<?php echo $idRes?>">
-                                <li>Nombre: Hernesto <?php echo $row['nombre']; ?></li>
+                                <li>Nombre: <?php echo $row['nombre']; ?></li>
                                 <li>Telefono: <?php echo $row['telefono']; ?></li>
-                                <li>Mail: aguslumendezmendez@gmail.com<?php echo $row['mail']; ?></li>
+                                <li>Mail: <?php echo $row['mail']; ?></li>
                             </ul>
                         </div>
                         <div class="tarjeta-evento-infoPrecios">
