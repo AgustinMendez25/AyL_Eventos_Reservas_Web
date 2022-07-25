@@ -26,9 +26,11 @@
             <h4>Agregar Evento</h4>
             <form action="assets/procesamiento/subirEvento.php" method="POST">
                 <h5>Detalles del Cliente</h5>
-                <input type="text" name="nombreCliente" placeholder="Nombre">
-                <input type="email" name="mailCliente" placeholder="Correo Electrónico">
-                <input type="text" name="telefonoCliente" placeholder="Teléfono">
+                <input type="number" name="idCliente" id="idCliente" style="display:none">
+                <input type="text" name="clienteExistente" id="clienteExistente" style="display:none;">
+                <input type="text" name="nombreCliente" id="nombreCliente" placeholder="Nombre">
+                <input type="email" name="mailCliente" id="mailCliente" placeholder="Correo Electrónico">
+                <input type="text" name="telefonoCliente" id="telefonoCliente" placeholder="Teléfono">
                 <div class="contenedor-btnClienteExistente"><span id="btnClientes">Usar cliente existente</span></div>
                 <!--Modal Clientes-->
                 <div class="modal" id="modalClientes">
@@ -43,7 +45,7 @@
                                 $envio = $conexion->query($query);
                                 while($row=$envio->fetch_assoc()){
                             ?>
-                             <span name="clientes[]"><?php echo $row['nombre'];?></span>
+                             <span name="clientes[]" class="cliente" value="<?php echo $row['idCliente'];?>"><?php echo $row['nombre'];?></span>
                             <?php } ?>
                         </div>
                     </div>
@@ -73,7 +75,7 @@
                 <input type="text" name="direccion" placeholder="Dirección">
                 <input type="number" name="precio" placeholder="Precio">
                 <input type="number" id="seña" name="seña" placeholder="Seña">
-
+                
                 <h5>Variedades y Entradas</h5>
                 <input type="button" class="botonInput" id="btnVariedades" value="Variedades">
                 <input type="button" class="botonInput" id="btnEntradas" value="Entradas">
@@ -143,6 +145,7 @@
 
     <!--JS-->
     <script src="assets/js/modal.js"></script>
+    <script src="assets/js/seleccionar.js"></script> 
 
 </body>
 

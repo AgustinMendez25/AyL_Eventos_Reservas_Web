@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 :root {
     --colorPrimario: rgb(169, 16, 5);
     --colorSecundario: rgb(255, 190, 110);
@@ -67,9 +71,26 @@ ul {
     transform: scale(1.04);
 }
 
+.div-consulta {
+    display: flex;
+    justify-content: center;
+}
+
+.div-consulta form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .div-consulta input {
     padding: 18px 54px;
     margin-top: 24px;
+}
+
+.div-consulta input[type="button"]{
+    font-size: 18px;
+    padding: 6px;
+    margin: 24px 48px;
 }
 
 
@@ -77,6 +98,8 @@ ul {
 
 .contenedor-tarjeta-evento {
     margin: 20px;
+    transition: all 1s ease;
+    opacity: 1;
 }
 
 .tarjeta-evento {
@@ -97,6 +120,23 @@ ul {
     padding: 4px 10px 10px 10px;
     display: flex;
     align-items: center;
+}
+
+.tarjeta-evento .eliminarTarjeta {
+    position: absolute;
+    right: 0;
+    padding: 6px 8px;
+    border-top-right-radius: 12px;
+    border:2px dashed black;
+    font-size: 24px;
+    animation: eliminarBtn 1.5s infinite;
+    display: none;
+}
+
+@keyframes eliminarBtn {
+    0%   {border: 2px dashed rgba(0, 0, 0, 0)}
+    75% {border: 2px dashed rgb(0, 0, 0);}
+    100% {border: 2px dashed rgb(0, 0, 0);}
 }
 
 .tarjeta-evento-cartel {
@@ -124,7 +164,7 @@ ul {
 #tarjeta-evento-infoDesplegable {
     display: flex;
     padding: 10px;
-    background-color: rgb(134, 218, 123);
+    background-color: rgb(5, 164, 169);
     position: relative;
     width: 75%;
     top: -200px;
@@ -303,6 +343,11 @@ ul {
     margin-left: 20px;
 }
 
+@keyframes colorear {
+    50%  {background-color: green;}
+    100% {background-color: rgb(206, 203, 203);}
+  }
+
 /*Modales*/
 
 .modal {
@@ -342,6 +387,7 @@ ul {
 .modal .modal-caja .header h4 {
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 2px black;
+    padding: 12px;
 }
 
 .modal .modal-caja .header label {
@@ -360,7 +406,7 @@ ul {
     overflow-y: scroll;
 }
 
-.modal .modal-caja .contenido span {
+.modal .modal-caja .contenido span, .modal .modal-caja .contenido button{
     display: inline-block;
     width: 80%;
     margin: 10px 0px;
@@ -373,4 +419,41 @@ ul {
     font-size: 20px;
     font-weight: 400;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    border:0;
+}
+
+/*Cancelar Eliminar*/
+
+#cancelarEliminar {
+    position: sticky;
+    background-color: var(--colorSecundario);
+    z-index: 50;
+    top: 0;
+    text-align: center;
+    padding: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    display: none;
+}
+
+#cancelarEliminar span {
+    font-size: 28px;
+    color: var(--colorPrimario);
+    font-weight: 800;
+}
+
+/*Cartel no eventos*/
+
+.div-noEventos {
+    margin-top:36px;
+    display:flex;
+    justify-content:center
+}
+
+.div-noEventos h4 {
+    text-align:center;
+    padding:12px 24px;
+    background-color:rgb(255, 190, 110);
+    border-radius:12px;color:rgb(169, 16, 5);
+    font-size: 26px;
 }

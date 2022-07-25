@@ -11,9 +11,8 @@ const definirColorTarjeta = (fecha, id)=>{
     const fechaAConvertir = fechaSplit[2] + "-" + fechaSplit[1] + "-" + fechaSplit[0];
     const fechaFinal = new Date(fechaAConvertir).getTime();
 
-    if (fechaFinal > actual) tarjetaChild.style.backgroundColor = 'red'
-    else if (fechaFinal < actual) tarjetaChild.style.backgroundColor = 'green'
-    else tarjetaChild.style.backgroundColor = 'blue';
+    if (fechaFinal < actual) tarjetaChild.style.backgroundColor = 'rgb(11, 169, 5)'
+    else tarjetaChild.style.backgroundColor = 'rgb(169, 16, 5)'
 }
 
 const definirColorSeña = (id)=>{
@@ -21,7 +20,7 @@ const definirColorSeña = (id)=>{
     const valorSeña = seña.innerText;
     
     if (valorSeña == 0) {
-        seña.style.color = 'red';
+        seña.style.color = 'rgb(169, 16, 5)';
         seña.innerText = 'No señado';
     }
     else seña.style.color = 'green'

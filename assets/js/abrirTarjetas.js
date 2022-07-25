@@ -1,12 +1,9 @@
 "use strict";
 
 //const separador = document.getElementById("separador");
-const tarjetas = document.querySelectorAll(".tarjeta-evento");
+const tarjetas = document.querySelectorAll(".contenedor-tarjeta-evento");
 
-for (let i = 1 ; i <= tarjetas.length ; i++) {
-    const id = "tarjeta-evento-" + i;
-
-    const tarjeta = document.getElementById(id);
+for (const tarjeta of tarjetas) {
     const tarjetaInfo = tarjeta.lastElementChild.firstElementChild;
     
     const tarjetaInfoTexto1 = tarjetaInfo.firstElementChild;
