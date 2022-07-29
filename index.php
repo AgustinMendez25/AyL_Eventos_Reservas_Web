@@ -1,3 +1,14 @@
+<?php
+
+    session_start();
+
+    if (empty($_SESSION['contraseña_admin'])){
+        header("Location: ingreso.php");
+    }
+    else{
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -11,6 +22,9 @@
     <!--CSS-->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <!--FONTS-->
+    <script src="https://kit.fontawesome.com/9f41015d54.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -20,6 +34,9 @@
             <h1>A&L Eventos Reservas</h1>
         </div>
         <div class="logo-div">
+            <a class="iconCerrarSesion" href="assets/procesamiento/cerrarSesion.php">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
             <img src="assets/img/Logo.png">
         </div>
         <div class="contenido">
@@ -53,3 +70,7 @@
 
 </body>
 </html>
+
+<?php
+    }
+?>

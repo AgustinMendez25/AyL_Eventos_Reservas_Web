@@ -1,8 +1,6 @@
 <?php
     include("../../conexion.php");
 
-    echo 'Subir evento\n';
-
     if ( isset($_POST['btn-agregar'])){
         $query2 = "";
         if ( $_POST['idCliente'] == ""){ //Crear cliente y subir registro de reserva

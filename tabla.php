@@ -1,5 +1,13 @@
 <?php
     include("conexion.php");
+
+    session_start();
+
+    if (empty($_SESSION['contraseña_admin'])){
+        header("Location: ingreso.php");
+    }
+    else{
+
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +27,9 @@
     <!--JS-->
     <script src="assets/js/coloresTarjeta.js"></script>
 
+    <!--FONTS-->
+    <script src="https://kit.fontawesome.com/9f41015d54.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>   
@@ -32,7 +43,6 @@
                 <a href="index.php">Inicio</a>
                 <a href="agregarEvento.php">Agregar</a>
                 <button id="btn-filtrar" class="btn-opt">Filtrar</button>
-                <button id="btn-eliminar" class="btn-opt">Eliminar</button>
                 <button id="btn-menu" class="btn-opt">Menú</button>
             </div>
             <!--Modal FILTROS-->
@@ -52,9 +62,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="cancelarEliminar">
-            <span>Cancelar</span>
         </div>
         <div id="separador" style="height: 54px;"></div>
         <div class="contenedor-eventos">
@@ -89,6 +96,7 @@
             ?>
             <div id="tarjeta-evento-<?php echo $idRes?>" class="contenedor-tarjeta-evento">
                 <div class="tarjeta-evento">
+                    <a class="aIcon" href="editarEvento.php?id=<?php echo $idRes?>"><i class="fas fa-pen"></i></a>
                     <span class="eliminarTarjeta" value="<?php echo $idRes?>">X</span>
                     <h3 class="tarjeta-evento-h3"><?php echo $row['localidad']; ?></h3>
                     <div class="tarjeta-evento-contenido">
@@ -147,3 +155,5 @@
 </body>
 
 </html>
+
+<?php } ?>

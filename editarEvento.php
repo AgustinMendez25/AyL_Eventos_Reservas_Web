@@ -31,58 +31,43 @@
             <a href="tabla.php"><h1>A&L Eventos Reservas</h1></a>
         </div>
         <div class="contenedor-divForm">
-            <h4>Agregar Evento</h4>
-            <form action="assets/procesamiento/subirEvento.php" method="POST">
-                <h5>Detalles del Cliente</h5>
-                <input type="number" name="idCliente" id="idCliente" style="display:none">
-                <input type="text" name="clienteExistente" id="clienteExistente" style="display:none;">
-                <input type="text" name="nombreCliente" id="nombreCliente" placeholder="Nombre">
-                <input type="email" name="mailCliente" id="mailCliente" placeholder="Correo Electrónico">
-                <input type="text" name="telefonoCliente" id="telefonoCliente" placeholder="Teléfono">
-                <div class="contenedor-btnClienteExistente"><span id="btnClientes">Usar cliente existente</span></div>
-                <!--Modal Clientes-->
-                <div class="modal" id="modalClientes">
-                    <div class="modal-caja" id="modalClientes-caja">
-                        <div class="header">
-                            <h4>Clientes</h4>
-                            <label id="cerrarModalClientes">X</label>
-                        </div>
-                        <div class="contenido">
-                            <?php //PHP CLIENTES
-                                $query = "SELECT * FROM cliente";
-                                $envio = $conexion->query($query);
-                                while($row=$envio->fetch_assoc()){
-                            ?>
-                             <span name="clientes[]" class="cliente" value="<?php echo $row['idCliente'];?>"><?php echo $row['nombre'];?></span>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
+            <h4>Editar Evento</h4>
+            <form action="assets/procesamiento/updateEvento.php" method="POST">
+                <?php
+                    $query = "select fecha,idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio,seña,nombre from reserva r inner join cliente c on r.idCliente = c.idCliente where idReserva = ".$_GET['id'];
+                    $envio = $conexion->query($query);
+                    while($row=$envio->fetch_assoc()){
+
+                ?>
+
+                <input style="display:none" name="idRes" type="number" value="<?php echo $_GET['id'] ?>">
+
+                <h5>Evento del Cliente: <?php echo $row['nombre'] ?></h5>
 
                 <h5>Detalles del Evento</h5>
-                <input type="date" name="fecha">
+                <input type="date" name="fecha" value="<?php echo $row['fecha'] ?>">
                 <div class="div-dosHijos">
                     <select name="horario">
                         <option value="mediodia">Mediodia</option>
                         <option value="tarde">Tarde</option>
                         <option value="noche">Noche</option>
                     </select>
-                    <input type="time" name="hora">
+                    <input type="time" name="hora" value="<?php echo $row['hora'] ?>">
                 </div>
                 <div class="div-dosHijos">
                     <div>
                         <label for="">Adultos</label>
-                        <input type="number" name="cantAdultos" min="25" value="25">
+                        <input type="number" name="cantAdultos" min="25" value="<?php echo $row['cantAdultos'] ?>">
                     </div>
                     <div>
                         <label for="">Niños</label>
-                        <input type="number" name="cantChicos" value="0">
+                        <input type="number" name="cantChicos" value="<?php echo $row['cantChicos'] ?>">
                     </div>
                 </div>
-                <input type="text" name="localidad" placeholder="Localidad">
-                <input type="text" name="direccion" placeholder="Dirección">
-                <input type="number" name="precio" placeholder="Precio">
-                <input type="number" id="seña" name="seña" placeholder="Seña">
+                <input type="text" name="localidad" placeholder="Localidad" value="<?php echo $row['localidad'] ?>">
+                <input type="text" name="direccion" placeholder="Dirección" value="<?php echo $row['direccion'] ?>">
+                <input type="number" name="precio" placeholder="Precio" value="<?php echo $row['precio'] ?>">
+                <input type="number" id="seña" name="seña" placeholder="Seña" value="<?php echo $row['seña'] ?>">
                 
                 <h5>Variedades y Entradas</h5>
                 <input type="button" class="botonInput" id="btnVariedades" value="Variedades">
@@ -143,6 +128,7 @@
                         </div>
                     </div>
                 </div>
+                <?php } ?>
                 <div class="div-acciones">
                     <a href="tabla.php"><input type="button" id="btn-cancelar" value="Cancelar"></a>
                     <input type="submit" name="btn-agregar" id="btn-agregar" value="Agregar">

@@ -37,6 +37,21 @@ ul {
 
 /*-------------CSS INDEX----------*/
 
+.iconCerrarSesion {
+    position: absolute;
+    right: 0;
+    background-color: var(--colorSecundario);
+    margin-top: -20px;
+    padding: 14px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.iconCerrarSesion i {
+    font-size: 24px;
+    color: var(--colorPrimario);
+}
+
 .logo-div {
     width: 280px;
     margin: auto;
@@ -137,6 +152,21 @@ ul {
     0%   {border: 2px dashed rgba(0, 0, 0, 0)}
     75% {border: 2px dashed rgb(0, 0, 0);}
     100% {border: 2px dashed rgb(0, 0, 0);}
+}
+
+.tarjeta-evento .aIcon {
+    position: absolute;
+    display: none;
+    left: 0;
+}
+
+.tarjeta-evento i {
+    padding: 6px 8px;
+    border-top-left-radius: 12px;
+    border:2px dashed black;
+    font-size: 28px;
+    animation: eliminarBtn 1.5s infinite;
+    color:black;
 }
 
 .tarjeta-evento-cartel {
@@ -420,26 +450,6 @@ ul {
     font-weight: 400;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     border:0;
-}
-
-/*Cancelar Eliminar*/
-
-#cancelarEliminar {
-    position: sticky;
-    background-color: var(--colorSecundario);
-    z-index: 50;
-    top: 0;
-    text-align: center;
-    padding: 16px;
-    border-bottom-right-radius: 16px;
-    border-bottom-left-radius: 16px;
-    display: none;
-}
-
-#cancelarEliminar span {
-    font-size: 28px;
-    color: var(--colorPrimario);
-    font-weight: 800;
 }
 
 /*Cartel no eventos*/

@@ -3,7 +3,6 @@
 const menu = document.getElementById("menu");
 
 const filtrarBtn = document.getElementById("btn-filtrar");
-const eliminarBtn = document.getElementById("btn-eliminar");
 const menuBtn = document.getElementById("btn-menu");
 
 const separador = document.getElementById("separador");
@@ -11,8 +10,6 @@ const separador = document.getElementById("separador");
 const modalFiltros = document.getElementById("modalFiltros");
 const modalFiltrosCaja = document.getElementById("modalFiltros-caja");
 const cerrarModalFiltros = document.getElementById("cerrarModalFiltros");
-
-const cancelarEliminar = document.getElementById("cancelarEliminar");
 
 
 let abierto = false;
@@ -47,6 +44,7 @@ cerrarModalFiltros.addEventListener("click", ()=>{
     modalFiltros.style.pointerEvents = "none";
 })
 
+/*
 eliminarBtn.addEventListener("click", ()=>{
     cancelarEliminar.style.display = "block";
     menu.style.animation = "cerrarMenu 0.2s forwards";
@@ -81,4 +79,4 @@ cancelarEliminar.addEventListener("click", ()=>{
     for (const i of botonesEliminar) {
         i.style.display = "none";
     }
-})
+})*/
