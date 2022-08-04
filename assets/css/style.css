@@ -122,6 +122,7 @@ ul {
     color:rgb(255, 255, 255);
     position: relative;
     z-index: 1;
+    padding-bottom: 8px;
 }
 
 .tarjeta-evento-h3 {
@@ -175,6 +176,46 @@ ul {
     font-size: 22px;
     text-align: center;
     border: 1px solid black;
+}
+
+.tarjeta-evento-cants {
+    margin-top: 12px;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+}
+
+svg, rect  {
+    top: 0;
+    margin-left: 0px;
+    width: 150px;
+    height: 70px;
+    fill: transparent;
+}
+
+rect {
+    stroke: black;
+    stroke-width: 4;
+    stroke-dasharray: 8;
+    animation: girarStroke 0.7s infinite linear;
+    fill: var(--colorSecundario);
+}
+
+.tarjeta-evento-cants ul{
+    padding: 12px 0;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    fill: transparent;
+    color: black;
+}
+
+@keyframes girarStroke {
+    
+    100%{
+        stroke-dashoffset: 16;
+    }
 }
 
 .tarjeta-evento-info {

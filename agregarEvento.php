@@ -32,7 +32,7 @@
         </div>
         <div class="contenedor-divForm">
             <h4>Agregar Evento</h4>
-            <form action="assets/procesamiento/subirEvento.php" method="POST">
+            <div class="form">
                 <h5>Detalles del Cliente</h5>
                 <input type="number" name="idCliente" id="idCliente" style="display:none">
                 <input type="text" name="clienteExistente" id="clienteExistente" style="display:none;">
@@ -60,29 +60,29 @@
                 </div>
 
                 <h5>Detalles del Evento</h5>
-                <input type="date" name="fecha">
+                <input type="date" id="fecha">
                 <div class="div-dosHijos">
-                    <select name="horario">
+                    <select id="horario">
                         <option value="mediodia">Mediodia</option>
                         <option value="tarde">Tarde</option>
                         <option value="noche">Noche</option>
                     </select>
-                    <input type="time" name="hora">
+                    <input type="time" id="hora">
                 </div>
                 <div class="div-dosHijos">
                     <div>
                         <label for="">Adultos</label>
-                        <input type="number" name="cantAdultos" min="25" value="25">
+                        <input type="number" id="cantAdultos" min="25" value="25">
                     </div>
                     <div>
                         <label for="">Niños</label>
-                        <input type="number" name="cantChicos" value="0">
+                        <input type="number" id="cantChicos" value="0">
                     </div>
                 </div>
-                <input type="text" name="localidad" placeholder="Localidad">
-                <input type="text" name="direccion" placeholder="Dirección">
-                <input type="number" name="precio" placeholder="Precio">
-                <input type="number" id="seña" name="seña" placeholder="Seña">
+                <input type="text" id="localidad" placeholder="Localidad">
+                <input type="text" id="direccion" placeholder="Dirección">
+                <input type="number" id="precio" placeholder="Precio">
+                <input type="number" id="seña" id="seña" placeholder="Seña">
                 
                 <h5>Variedades y Entradas</h5>
                 <input type="button" class="botonInput" id="btnVariedades" value="Variedades">
@@ -102,7 +102,7 @@
                                 $envio = $conexion->query($query);
                                 while($row=$envio->fetch_assoc()){
                             ?>
-                             <span name="variedades[]"><?php echo $row['variedad'];?></span>
+                             <span name="variedades[]" class="variedad"><?php echo $row['variedad'];?></span>
                             <?php } ?>
                             <h5>Variedades Extras</h5>
                             <?php //PHP VARIEDADES
@@ -110,7 +110,7 @@
                                 $envio = $conexion->query($query);
                                 while($row=$envio->fetch_assoc()){
                             ?>
-                             <span name="variedadesExtra[]"><?php echo $row['variedadextra'];?></span>
+                             <span name="variedadesExtra[]" class="variedadExtra"><?php echo $row['variedadextra'];?></span>
                             <?php } ?>
                         </div>
                     </div>
@@ -126,19 +126,19 @@
                         <div class="contenido">
                             <h5>Entradas Comunes</h5>
                             <?php //PHP ENTRADAS
-                                $query = "SELECT entrada FROM entradas";
+                                $query = "SELECT * FROM entradas";
                                 $envio = $conexion->query($query);
                                 while($row=$envio->fetch_assoc()){
                             ?>
-                            <span name="entradas[]"><?php echo $row['entrada'];?></span>
+                            <span name="entradas[]" class="entrada" seleccionado=0 value=<?php echo $row['id'];?>><?php echo $row['entrada'];?></span>
                             <?php } ?>
                             <h5>Entradas Especiales</h5>
                             <?php //PHP ENTRADAS
-                                $query = "SELECT entradaespecial FROM entradasespeciales";
+                                $query = "SELECT * FROM entradasespeciales";
                                 $envio = $conexion->query($query);
                                 while($row=$envio->fetch_assoc()){
                             ?>
-                            <span name="entradasEspeciales[]"><?php echo $row['entradaespecial'];?></span>
+                            <span name="entradasEspeciales[]" class="entradaEspecial" seleccionado=0 value=<?php echo $row['id'];?>><?php echo $row['entradaEspecial'];?></span>
                             <?php } ?>
                         </div>
                     </div>
@@ -147,11 +147,12 @@
                     <a href="tabla.php"><input type="button" id="btn-cancelar" value="Cancelar"></a>
                     <input type="submit" name="btn-agregar" id="btn-agregar" value="Agregar">
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
     <!--JS-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="assets/js/modal.js"></script>
     <script src="assets/js/seleccionar.js"></script> 
 

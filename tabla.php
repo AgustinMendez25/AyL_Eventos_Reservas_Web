@@ -80,7 +80,15 @@
                             break;
                     }
                 }
-                $query = "select fecha,idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio,seña,nombre,mail,telefono from reserva r inner join cliente c on r.idCliente = c.idCliente " . $where . " order by fecha";
+                $query = "select fecha,r.idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio,seña,nombre,mail,telefono, ((select count(*) from entradasreserva er where er.idReserva = r.idReserva) + (select count(*) from entradasespecialesreserva esr where esr.idReserva = r.idReserva)) as cantEntradas,
+                ((select count(*) from variedadesreserva vr where vr.idReserva = r.idReserva) + (select count(*) from variedadesextrareserva vxr where vxr.idReserva = r.idReserva)) as cantVariedades
+                from reserva r inner join cliente c on r.idCliente = c.idCliente
+                " . $where . "
+                group by r.idReserva
+                order by fecha";
+                /*
+                
+                */
                 $envio = $conexion->query($query);
                 if ($envio->num_rows == 0){
                     echo '
@@ -100,18 +108,26 @@
                     <span class="eliminarTarjeta" value="<?php echo $idRes?>">X</span>
                     <h3 class="tarjeta-evento-h3"><?php echo $row['localidad']; ?></h3>
                     <div class="tarjeta-evento-contenido">
-                        <div class="tarjeta-evento-cartel">
-                            <h3>
-                                <?php echo $fechaFinal; ?>
-                            </h3>
+                        <div>
+                            <div class="tarjeta-evento-cartel">
+                                <h3>
+                                    <?php echo $fechaFinal; ?>
+                                </h3>
+                            </div>
+                            <div class="tarjeta-evento-cants">
+                                <svg id="contenedorCants"><rect></rect></svg>
+                                <ul>
+                                    <li>Variedades: <?php echo $row['cantVariedades']; ?></li>
+                                    <li>Entradas: <?php echo $row['cantEntradas']; ?></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="tarjeta-evento-info">
                             <ul>
                                 <li>Adultos: <?php echo $row['cantAdultos']; ?></li>
                                 <li>Niños: <?php echo $row['cantChicos']; ?></li>
                                 <li>Dirección: <?php echo $row['direccion']; ?></li>
-                                <li>Horario: <?php echo $row['horario']; ?></li>
-                                <li>Hora: <?php echo $row['hora']; ?></li>
+                                <li>Horario: <?php echo $row['horario']; ?><?php if($row['hora'] != null){echo ' ('.$row['hora'].'hs)';} ?></li>
                             </ul>
                         </div>
                     </div>
@@ -133,6 +149,7 @@
                                 <li>Seña: <span id="seña-evento-<?php echo $idRes?>"><?php echo $row['seña']; ?></span></li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
             </div>
