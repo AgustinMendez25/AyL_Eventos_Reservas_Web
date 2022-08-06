@@ -57,9 +57,9 @@ function coloresSeleccionar(elementos) {
 }
 
 coloresSeleccionar(entradas);
-coloresSeleccionar(entradasEspeciales);/*
+coloresSeleccionar(entradasEspeciales);
 coloresSeleccionar(variedades);
-coloresSeleccionar(variedadesExtra);*/
+coloresSeleccionar(variedadesExtra);
 
 /**
  * Dada una colección de elementos (entradas,variedades,etc.), los recorre y verifica si estan seleccionados. Luego almacena sus ids en un
@@ -82,10 +82,12 @@ function seleccionados(elementos) {
 const btnAgregar = document.getElementById("btn-agregar");
 
 btnAgregar.addEventListener("click", ()=>{
+    btnAgregar.setAttribute("disabled","");
+    btnAgregar.style.pointerEvents = "none";
     const entr = seleccionados(entradas);
-    const entrEspeciales = seleccionados(entradasEspeciales);/*
+    const entrEspeciales = seleccionados(entradasEspeciales);
     const varie = seleccionados(variedades);
-    const varieExtra = seleccionados(variedadesExtra);*/
+    const varieExtra = seleccionados(variedadesExtra);
     
     $.ajax({
         url: 'assets/procesamiento/subirEvento.php',
@@ -105,9 +107,9 @@ btnAgregar.addEventListener("click", ()=>{
             'precio' : document.getElementById("precio").value,
             'seña' : document.getElementById("seña").value,
             'entradas' : entr,
-            'entradasEspeciales' : entrEspeciales/*,
+            'entradasEspeciales' : entrEspeciales,
             'variedades' : varie,
-            'variedadesExtra' : varieExtra*/
+            'variedadesExtra' : varieExtra
         },
         success: function(response) {
             //let resultado = JSON.parse(response);
@@ -115,6 +117,9 @@ btnAgregar.addEventListener("click", ()=>{
             if (response) {
                 alert("Agregado Exitosamente");
                 window.location.href = "tabla.php";
+            }else{
+                alert("Debes ingresar la fecha y la localidad. Intente nuevamente");
+                window.location.reload();
             }
         }
     })

@@ -46,3 +46,146 @@ for (const tarjeta of tarjetas) {
         }
     });
 }
+
+const contenedoresCants = document.querySelectorAll(".contenedorCants");
+const modalVarieEntr = document.getElementById("modalVarieEntr");
+const modalVarieEntrCaja = document.getElementById("modalVarieEntr-caja");
+
+const contenidoVarieEntr = document.getElementById("contenidoVarieEntr");
+const entradasContenido = document.getElementById("entradas");
+const entradasEspecialesContenido = document.getElementById("entradasEspeciales");
+const variedadesContenido = document.getElementById("variedades");
+const variedadesExtraContenido = document.getElementById("variedadesExtra");
+
+function procesarResultado(tipo, resultado) {
+    let contenido;
+    let mensaje;
+    switch (tipo) {
+        case 'entradas':
+            contenido = entradasContenido;
+            mensaje = "Sin entradas";
+            break;
+        case 'entradasEspeciales':
+            contenido = entradasEspecialesContenido;
+            mensaje = "Sin entradas especiales";
+            break;
+        case 'variedades':
+            contenido = variedadesContenido;
+            mensaje = "Sin variedades";
+            break;
+        case 'variedadesExtra':
+            contenido = variedadesExtraContenido;
+            mensaje = "Sin variedades extra";
+            break;
+    }
+    if (resultado[0][tipo] == "") {
+        const span = document.createElement("span");
+        const texto = document.createTextNode(mensaje);
+        span.appendChild(texto);
+        contenido.appendChild(span);
+    }else{
+        let a = resultado[0][tipo].split(",");
+        
+        for (const i of a) {
+            const span = document.createElement("span");
+            span.style.backgroundColor = "green";
+            const texto = document.createTextNode(i);
+            span.appendChild(texto);
+            contenido.appendChild(span);
+            //Borrar consultas una vez realizadas para que no se pisen entre si
+        }
+    }
+}
+
+for (const contenedorCant of contenedoresCants) {
+    contenedorCant.addEventListener("click",()=>{
+        modalVarieEntr.style.visibility = "visible";
+        modalVarieEntr.style.opacity = "1";
+        modalVarieEntrCaja.style.transform = "translateY(0%)";
+        modalVarieEntr.style.pointerEvents = "auto";
+
+        $.ajax({
+            url: "assets/procesamiento/obtenerVarieEntr.php",
+            type: "POST",
+            data: {"idReserva": contenedorCant.getAttribute("id")},
+            success: function(response) {
+                let resultado = JSON.parse(response);
+                procesarResultado('entradas', resultado);
+                procesarResultado('entradasEspeciales', resultado);
+                procesarResultado('variedades', resultado);
+                procesarResultado('variedadesExtra', resultado);
+            }
+        })
+    })
+}
+
+function eliminarContenido(contenido) {
+    while (contenido.hasChildNodes()) {
+        contenido.removeChild(contenido.firstChild);
+    }
+}
+
+document.getElementById("cerrarModaVarieEntr").addEventListener("click", ()=>{
+    modalVarieEntr.style.visibility = "hidden";
+    modalVarieEntr.style.opacity = "0";
+    modalVarieEntrCaja.style.transform = "translateY(-30%)";
+    modalVarieEntr.style.pointerEvents = "none"; 
+    eliminarContenido(entradasContenido);
+    eliminarContenido(entradasEspecialesContenido);
+    eliminarContenido(variedadesContenido);
+    eliminarContenido(variedadesExtraContenido);
+})
+
+
+
+/*
+
+
+const contenidoEventos = document.getElementById('contenidoEventos');
+
+while (contenidoEventos.hasChildNodes()) {
+                contenidoEventos.removeChild(contenidoEventos.firstChild);
+            }
+
+            modalEventos.style.visibility = "visible";
+            modalEventos.style.opacity = "1";
+            modalEventosCaja.style.transform = "translateY(0%)";
+
+            document.getElementById("headerTexto").innerHTML = "Eventos día "+fecha;
+            
+            let resultado = JSON.parse(response);
+            if (resultado.length == 0) {
+                const span = document.createElement("span");
+                const texto = document.createTextNode("No hay eventos reservados");
+                span.appendChild(texto);
+                contenidoEventos.appendChild(span);
+            }else{
+                for (const i of resultado) {
+                    const span = document.createElement("span");
+                    const texto = document.createTextNode(i['hora'] + "hs ("+i['horario']+") en "+i['localidad']);
+                    span.appendChild(texto);
+                    contenidoEventos.appendChild(span);
+                    //Borrar consultas una vez realizadas para que no se pisen entre si
+                }
+            }
+
+                    <!--Modal VARIEDADES ENTRADAS-->
+                    <div class="modal" id="modalVarieEntr">
+                        <div class="modal-caja" id="modalVarieEntr-caja">
+                            <div class="header">
+                                <h4>Variedades y Entradas</h4>
+                                <label id="cerrarModaVarieEntr">X</label>
+                            </div>
+                            <div class="contenido" id="contenidoVarieEntr">
+                                <h5>Entradas</h5>
+                                <div id="entradas"></div>
+                                <h5>Entradas Especiales</h5>
+                                <div id="entradasEspeciales"></div>
+                                <h5>Variedades</h5>
+                                <div id="variedades"></div>
+                                <h5>Variedades Extra</h5>
+                                <div id="variedadesExtra"></div>
+                            </div>
+                        </div>
+                    </div>
+*/

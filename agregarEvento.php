@@ -98,19 +98,19 @@
                         <div class="contenido">
                             <h5>Variedades Comunes</h5>
                             <?php //PHP VARIEDADES
-                                $query = "SELECT variedad FROM variedades";
+                                $query = "SELECT * FROM variedades";
                                 $envio = $conexion->query($query);
                                 while($row=$envio->fetch_assoc()){
                             ?>
-                             <span name="variedades[]" class="variedad"><?php echo $row['variedad'];?></span>
+                             <span name="variedades[]" class="variedad" value=<?php echo $row['id'];?>><?php echo $row['variedad'];?></span>
                             <?php } ?>
                             <h5>Variedades Extras</h5>
                             <?php //PHP VARIEDADES
-                                $query = "SELECT variedadextra FROM variedadesextra";
+                                $query = "SELECT * FROM variedadesextra";
                                 $envio = $conexion->query($query);
                                 while($row=$envio->fetch_assoc()){
                             ?>
-                             <span name="variedadesExtra[]" class="variedadExtra"><?php echo $row['variedadextra'];?></span>
+                             <span name="variedadesExtra[]" class="variedadExtra" value=<?php echo $row['id'];?>><?php echo $row['variedadextra'];?></span>
                             <?php } ?>
                         </div>
                     </div>

@@ -115,8 +115,8 @@
                                 </h3>
                             </div>
                             <div class="tarjeta-evento-cants">
-                                <svg id="contenedorCants"><rect></rect></svg>
-                                <ul>
+                                <svg><rect></rect></svg>
+                                <ul class="contenedorCants" id="<?php echo $idRes?>">
                                     <li>Variedades: <?php echo $row['cantVariedades']; ?></li>
                                     <li>Entradas: <?php echo $row['cantEntradas']; ?></li>
                                 </ul>
@@ -146,10 +146,10 @@
                             <h5>Precios</h5>
                             <ul>
                                 <li>Precio: $<?php echo $row['precio']; ?></li>
+                                <li>Total: $<?php echo $row['precio'] * $row['cantAdultos'] + $row['precio'] * $row['cantChicos']; ?></li>
                                 <li>Seña: <span id="seña-evento-<?php echo $idRes?>"><?php echo $row['seña']; ?></span></li>
                             </ul>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -159,6 +159,25 @@
                 setearDatosNulos('ul-cliente-<?php echo $idRes?>');
             </script>
             <?php } ?>
+        </div>
+        <!--Modal VARIEDADES ENTRADAS-->
+        <div class="modal" id="modalVarieEntr">
+            <div class="modal-caja" id="modalVarieEntr-caja">
+                <div class="header">
+                    <h4>Variedades y Entradas</h4>
+                    <label id="cerrarModaVarieEntr">X</label>
+                </div>
+                <div class="contenido" id="contenidoVarieEntr">
+                    <h5>Entradas</h5>
+                    <div id="entradas"></div>
+                    <h5>Entradas Especiales</h5>
+                    <div id="entradasEspeciales"></div>
+                    <h5>Variedades</h5>
+                    <div id="variedades"></div>
+                    <h5>Variedades Extra</h5>
+                    <div id="variedadesExtra"></div>
+                </div>
+            </div>
         </div>
     </div>
 

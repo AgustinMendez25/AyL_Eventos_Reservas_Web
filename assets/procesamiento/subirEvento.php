@@ -2,7 +2,17 @@
     include("../../conexion.php");
 
 
-    if (isset($_POST['fecha'])){
+    if ($_POST['fecha'] != "" and $_POST['localidad'] != ""){
+        
+        $precio = $_POST['precio'];
+        $seña = $_POST['seña'];
+        $hora = $_POST['hora'];
+        $direccion = $_POST['direccion'];
+        if($precio == null){ $precio = 0; }
+        if($seña == null){ $seña = 0; }
+        if($hora == null){ $hora = ""; }
+        if($direccion == null){ $direccion = ""; }
+        
         $query2 = "";
         if ( $_POST['idCliente'] == ""){ //Crear cliente y subir registro de reserva
             $query = "insert into cliente(nombre, mail, telefono) values('".$_POST['nombreCliente']."', '".$_POST['mailCliente']."', '".$_POST['telefonoCliente']."')";
@@ -22,13 +32,13 @@
                 (select max(idCliente) as idCliente from cliente),
                 '".$_POST['fecha']."',
                 '".$_POST['horario']."',
-                '".$_POST['hora']."',
+                '".$hora."',
                 ".$_POST['cantAdultos'].",
                 ".$_POST['cantChicos'].",
                 '".$_POST['localidad']."',
-                '".$_POST['direccion']."',
-                ".$_POST['precio'].",
-                ".$_POST['seña']."
+                '".$direccion."',
+                ".$precio.",
+                ".$seña."
                 )";
         }else{ //Usar cliente existente y subir registro de reserva
             $query2 = "insert into reserva(
@@ -45,13 +55,13 @@
                 ".$_POST['idCliente'].",
                 '".$_POST['fecha']."',
                 '".$_POST['horario']."',
-                '".$_POST['hora']."',
+                '".$hora."',
                 ".$_POST['cantAdultos'].",
                 ".$_POST['cantChicos'].",
                 '".$_POST['localidad']."',
-                '".$_POST['direccion']."',
-                ".$_POST['precio'].",
-                ".$_POST['seña']."
+                '".$direccion."',
+                ".$precio.",
+                ".$seña."
                 )";
         }
 
@@ -79,7 +89,7 @@
             $envio3 = $conexion->query($query4);
         }
 
-        /*
+        
         if(isset($_POST['variedades']) and $_POST['variedades']!= ""){
             $query5 = "INSERT into variedadesreserva(idReserva, idVariedad) values ";
             $variedades = explode(",",$_POST['variedades']);
@@ -92,21 +102,24 @@
         }
 
         if(isset($_POST['variedadesExtra']) and $_POST['variedadesExtra']!= ""){
-            $query5 = "INSERT into variedadesextrareserva(idReserva, idVariedadExtra) values ";
+            $query6 = "INSERT into variedadesextrareserva(idReserva, idVariedadExtra) values ";
             $variedades = explode(",",$_POST['variedadesExtra']);
             for ($x = 0; $x < count($variedades); $x++) {
-                $query5 = $query5."((select max(idReserva) from reserva), ".$variedades[$x]."), ";
+                $query6 = $query6."((select max(idReserva) from reserva), ".$variedades[$x]."), ";
             }
-            $query5 = rtrim($query5,", ");
+            $query6 = rtrim($query6,", ");
 
-            $envio5 = $conexion->query($query5);
-        }*/
+            $envio6 = $conexion->query($query6);
+        }
 
         echo true;
+
+    }else{
+        echo false;
     }
     /*
     $json[] = array(
-        'q' => $query3
+        'q' => $query2
     );
 
     $jsonstring = json_encode($json);
