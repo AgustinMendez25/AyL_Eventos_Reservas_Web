@@ -82,6 +82,7 @@
                 <input type="text" id="localidad" placeholder="Localidad">
                 <input type="text" id="direccion" placeholder="Dirección">
                 <input type="number" id="precio" placeholder="Precio">
+                <input type="number" id="traslado" placeholder="Traslado">
                 <input type="number" id="seña" id="seña" placeholder="Seña">
                 
                 <h5>Variedades y Entradas</h5>

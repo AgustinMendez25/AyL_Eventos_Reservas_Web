@@ -5,13 +5,19 @@
     if ($_POST['fecha'] != "" and $_POST['localidad'] != ""){
         
         $precio = $_POST['precio'];
+        $traslado = $_POST['traslado'];
         $seña = $_POST['seña'];
         $hora = $_POST['hora'];
         $direccion = $_POST['direccion'];
+        $cantChicos = $_POST['cantChicos'];
+        $cantAdultos = $_POST['cantAdultos'];
         if($precio == null){ $precio = 0; }
+        if($traslado == null){ $traslado = 0; }
         if($seña == null){ $seña = 0; }
         if($hora == null){ $hora = ""; }
         if($direccion == null){ $direccion = ""; }
+        if($cantChicos == null){ $cantChicos = 0; }
+        if($cantAdultos == null){ $cantAdultos = 0; }
         
         $query2 = "";
         if ( $_POST['idCliente'] == ""){ //Crear cliente y subir registro de reserva
@@ -28,6 +34,7 @@
                 localidad,
                 direccion,
                 precio,
+                traslado,
                 seña) values(
                 (select max(idCliente) as idCliente from cliente),
                 '".$_POST['fecha']."',
@@ -38,6 +45,7 @@
                 '".$_POST['localidad']."',
                 '".$direccion."',
                 ".$precio.",
+                ".$traslado.",
                 ".$seña."
                 )";
         }else{ //Usar cliente existente y subir registro de reserva
@@ -51,6 +59,7 @@
                 localidad,
                 direccion,
                 precio,
+                traslado,
                 seña) values(
                 ".$_POST['idCliente'].",
                 '".$_POST['fecha']."',
@@ -61,6 +70,7 @@
                 '".$_POST['localidad']."',
                 '".$direccion."',
                 ".$precio.",
+                ".$traslado.",
                 ".$seña."
                 )";
         }

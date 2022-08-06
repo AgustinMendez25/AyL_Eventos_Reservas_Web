@@ -80,7 +80,7 @@
                             break;
                     }
                 }
-                $query = "select fecha,r.idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio,seña,nombre,mail,telefono, ((select count(*) from entradasreserva er where er.idReserva = r.idReserva) + (select count(*) from entradasespecialesreserva esr where esr.idReserva = r.idReserva)) as cantEntradas,
+                $query = "select fecha,r.idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio,traslado,seña,nombre,mail,telefono, ((select count(*) from entradasreserva er where er.idReserva = r.idReserva) + (select count(*) from entradasespecialesreserva esr where esr.idReserva = r.idReserva)) as cantEntradas,
                 ((select count(*) from variedadesreserva vr where vr.idReserva = r.idReserva) + (select count(*) from variedadesextrareserva vxr where vxr.idReserva = r.idReserva)) as cantVariedades
                 from reserva r inner join cliente c on r.idCliente = c.idCliente
                 " . $where . "
@@ -145,9 +145,10 @@
                         <div class="tarjeta-evento-infoPrecios">
                             <h5>Precios</h5>
                             <ul>
-                                <li>Precio: $<?php echo $row['precio']; ?></li>
-                                <li>Total: $<?php echo $row['precio'] * $row['cantAdultos'] + $row['precio'] * $row['cantChicos']; ?></li>
+                                <li>Precio: <span>$<?php echo $row['precio']; ?></span></li>
+                                <li>Traslado: <span>$<?php echo $row['traslado']; ?></span></li>
                                 <li>Seña: <span id="seña-evento-<?php echo $idRes?>"><?php echo $row['seña']; ?></span></li>
+                                <li>Total: <span style="font-size:18px">$<?php echo $row['precio'] * $row['cantAdultos'] + $row['precio'] * $row['cantChicos'] + $row['traslado'] - $row['seña']; ?></span></li>
                             </ul>
                         </div>
                     </div>

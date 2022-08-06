@@ -258,6 +258,10 @@ rect {
     width: 50%;
 }
 
+.tarjeta-evento-infoPrecios span {
+    font-weight:bold;
+}
+
 #tarjeta-evento-infoDesplegable h5 {
     text-align: center;
     font-size: 21px;
@@ -338,8 +342,8 @@ rect {
     border-radius: 10px;
     text-align: center;
     background-color: var(--colorSecundario);
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     font-size: 17px;
     letter-spacing: 1px;
     font-weight: 400;
@@ -409,7 +413,7 @@ rect {
     width: 100%;
 }
 
-.contenedor-divForm .div-acciones #btn-agregar {
+.contenedor-divForm .div-acciones #btn-agregar,#btn-update {
     background-color: rgb(9, 136, 41);
     width: 65%;
     margin-left: 20px;

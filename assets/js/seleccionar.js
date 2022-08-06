@@ -44,6 +44,11 @@ const variedadesExtra = document.querySelectorAll(".variedadExtra");
  */
 function coloresSeleccionar(elementos) {
     for (const e of elementos) {
+        if(e.getAttribute("seleccionado") == 1){
+            e.style.backgroundColor = "green";
+        }else{
+            e.style.backgroundColor = "rgb(206, 203, 203)";
+        }
         e.addEventListener("click", ()=>{
             if(e.getAttribute("seleccionado") == 1){
                 e.style.backgroundColor = "rgb(206, 203, 203)";
@@ -88,6 +93,7 @@ btnAgregar.addEventListener("click", ()=>{
     const entrEspeciales = seleccionados(entradasEspeciales);
     const varie = seleccionados(variedades);
     const varieExtra = seleccionados(variedadesExtra);
+
     
     $.ajax({
         url: 'assets/procesamiento/subirEvento.php',
@@ -105,6 +111,7 @@ btnAgregar.addEventListener("click", ()=>{
             'localidad' : document.getElementById("localidad").value,
             'direccion' : document.getElementById("direccion").value,
             'precio' : document.getElementById("precio").value,
+            'traslado' : document.getElementById("traslado").value,
             'seña' : document.getElementById("seña").value,
             'entradas' : entr,
             'entradasEspeciales' : entrEspeciales,
