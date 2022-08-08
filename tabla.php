@@ -35,30 +35,32 @@
 <body>   
 
     <div class="contenedor">
-        <div class="nav">
-            <a href="index.php"><h1>A&L Eventos Reservas</h1></a>
-        </div>
-        <div class="contenedor-menu">
-            <div id="menu" class="div-menu">
-                <a href="index.php">Inicio</a>
-                <a href="agregarEvento.php">Agregar</a>
-                <button id="btn-filtrar" class="btn-opt">Filtrar</button>
-                <button id="btn-menu" class="btn-opt">Menú</button>
+        <div class="header">
+            <div class="nav">
+                <a href="index.php"><h1>A&L Eventos Reservas</h1></a>
             </div>
-            <!--Modal FILTROS-->
-            <div class="modal" id="modalFiltros">
-                <div class="modal-caja" id="modalFiltros-caja">
-                    <div class="header">
-                        <h4>Filtros</h4>
-                        <label id="cerrarModalFiltros">X</label>
-                    </div>
-                    <div class="contenido">
-                        <form method="post">
-                            <input type="text" name="filtro" id="filtro" value="1" style="display:none">
-                            <button id="fPendientes" name="fPendientes" type="submit">Pendientes</button>
-                            <button id="fRealizados" name="fRealizados" type="submit">Realizados</button>
-                            <button id="fTodos" name="fTodos" type="submit">Todos</button>
-                        </form>
+            <div class="contenedor-menu">
+                <div id="menu" class="div-menu">
+                    <a href="index.php">Inicio</a>
+                    <a href="agregarEvento.php">Agregar</a>
+                    <button id="btn-filtrar" class="btn-opt">Filtrar</button>
+                    <button id="btn-menu" class="btn-opt">Menú</button>
+                </div>
+                <!--Modal FILTROS-->
+                <div class="modal" id="modalFiltros">
+                    <div class="modal-caja" id="modalFiltros-caja">
+                        <div class="header">
+                            <h4>Filtros</h4>
+                            <label id="cerrarModalFiltros">X</label>
+                        </div>
+                        <div class="contenido">
+                            <form method="post">
+                                <input type="text" name="filtro" id="filtro" value="1" style="display:none">
+                                <button id="fPendientes" name="fPendientes" type="submit">Pendientes</button>
+                                <button id="fRealizados" name="fRealizados" type="submit">Realizados</button>
+                                <button id="fTodos" name="fTodos" type="submit">Todos</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -148,7 +150,7 @@
                                 <li>Precio: <span>$<?php echo $row['precio']; ?></span></li>
                                 <li>Traslado: <span>$<?php echo $row['traslado']; ?></span></li>
                                 <li>Seña: <span id="seña-evento-<?php echo $idRes?>"><?php echo $row['seña']; ?></span></li>
-                                <li>Total: <span style="font-size:18px">$<?php echo $row['precio'] * $row['cantAdultos'] + $row['precio'] * $row['cantChicos'] + $row['traslado'] - $row['seña']; ?></span></li>
+                                <li>Total: <span style="font-size:18px">$<?php echo $row['precio'] * $row['cantAdultos'] + $row['precio'] * $row['cantChicos'] * 0.5 + $row['traslado'] ?></span></li>
                             </ul>
                         </div>
                     </div>

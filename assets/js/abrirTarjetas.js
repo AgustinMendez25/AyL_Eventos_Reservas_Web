@@ -19,6 +19,7 @@ for (const tarjeta of tarjetas) {
             tarjetaInfo.style.animation = "cerrarInfo 1s forwards";
             const tiempo = setTimeout(()=>{
                 tarjetaInfo.style.top = "-100px";
+                tarjetaInfo.style.visibility = "hidden";
                 tarjetaInfoTexto1.style.animation = "";
                 tarjetaInfoTexto2.style.animation = "";
             },800);
@@ -40,6 +41,7 @@ for (const tarjeta of tarjetas) {
                 }
             })
             tarjetaInfo.style.animation = "desplazarInfo 1s forwards";
+            tarjetaInfo.style.visibility = "visible";
             tarjetaInfoTexto1.style.animation = "aparecerTexto 2s forwards";
             tarjetaInfoTexto2.style.animation = "aparecerTexto 2s forwards";
             const tiempo = setTimeout(()=>{tarjetaInfo.style.top = "0px"},800);

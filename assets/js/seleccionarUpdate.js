@@ -25,6 +25,7 @@ btnUpdate.addEventListener("click", ()=>{
             'precio' : document.getElementById("precio").value,
             'traslado' : document.getElementById("traslado").value,
             'seña' : document.getElementById("seña").value,
+            'cantVariedades' : document.getElementById("cantVariedades").value,
             'entradas' : entr,
             'entradasEspeciales' : entrEspeciales,
             'variedades' : varie,
@@ -32,7 +33,7 @@ btnUpdate.addEventListener("click", ()=>{
         },
         success: function(response) {
             //let resultado = JSON.parse(response);
-            //console.log(resultado[0]['q']);
+            //console.log(resultado[0]['q']);   
             if (response) {
                 alert("Editado Exitosamente");
                 window.location.href = "tabla.php";

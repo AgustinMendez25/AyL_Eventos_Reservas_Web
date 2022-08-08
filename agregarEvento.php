@@ -86,6 +86,7 @@
                 <input type="number" id="seña" id="seña" placeholder="Seña">
                 
                 <h5>Variedades y Entradas</h5>
+                <input type="number" id="cantVariedades" placeholder="Cantidad Variedades">
                 <input type="button" class="botonInput" id="btnVariedades" value="Variedades">
                 <input type="button" class="botonInput" id="btnEntradas" value="Entradas">
 

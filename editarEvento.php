@@ -71,6 +71,7 @@
                 <input type="number" id="seña" id="seña" placeholder="Seña" value="<?php echo $row['seña'] ?>">
                 
                 <h5>Variedades y Entradas</h5>
+                <input type="number" id="cantVariedades" placeholder="Cantidad Variedades">
                 <input type="button" class="botonInput" id="btnVariedades" value="Variedades">
                 <input type="button" class="botonInput" id="btnEntradas" value="Entradas">
 
@@ -132,7 +133,7 @@
                 <?php } ?>
                 <div class="div-acciones">
                     <a href="tabla.php"><input type="button" id="btn-cancelar" value="Cancelar"></a>
-                    <input type="submit" name="btn-update" id="btn-update" value="Agregar">
+                    <input type="submit" name="btn-update" id="btn-update" value="Editar">
                 </div>
             </div>
         </div>

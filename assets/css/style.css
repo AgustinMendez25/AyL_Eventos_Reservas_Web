@@ -21,11 +21,20 @@ ul {
     width: 100%;
 }
 
+.header {
+    position: relative;
+}
+
 .nav{
     padding: 16px 0px;
     background-color: var(--colorPrimario);
     position: relative;
-    z-index: 1;
+    z-index: 2;
+}
+
+.nav-contenedor {
+    position: relative;
+    z-index: 2;
 }
 
 .nav h1{
@@ -244,6 +253,7 @@ rect {
     height: 0px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    visibility: hidden;
 }
 
 #tarjeta-evento-infoDesplegable li {
