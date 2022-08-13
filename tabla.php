@@ -171,13 +171,13 @@
                     <label id="cerrarModaVarieEntr">X</label>
                 </div>
                 <div class="contenido" id="contenidoVarieEntr">
-                    <h5>Entradas</h5>
+                    <h5>Entradas (<p id="numeroEntradas"></p>)</h5>
                     <div id="entradas"></div>
-                    <h5>Entradas Especiales</h5>
+                    <h5>Entradas Especiales (<p id="numeroEntradasEspeciales"></p>)</h5>
                     <div id="entradasEspeciales"></div>
-                    <h5>Variedades</h5>
+                    <h5>Variedades (<p id="numeroVariedades"></p>)</h5>
                     <div id="variedades"></div>
-                    <h5>Variedades Extra</h5>
+                    <h5>Variedades Extra (<p id="numeroVariedadesExtra"></p>)</h5>
                     <div id="variedadesExtra"></div>
                 </div>
             </div>

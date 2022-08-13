@@ -59,7 +59,14 @@ const entradasEspecialesContenido = document.getElementById("entradasEspeciales"
 const variedadesContenido = document.getElementById("variedades");
 const variedadesExtraContenido = document.getElementById("variedadesExtra");
 
+/**
+ * Coloca spans en la información de variedades y entradas. Además, devuelve la cantidad de las mismas.
+ * @param {*} tipo (entradas/entradasEspeciales/variedades/variedadesExtra)
+ * @param {*} resultado resultado de la consulta con los datos
+ * @returns cantidad de elementos del tipo ingresado
+ */
 function procesarResultado(tipo, resultado) {
+    let devolver = 0;
     let contenido;
     let mensaje;
     switch (tipo) {
@@ -96,7 +103,11 @@ function procesarResultado(tipo, resultado) {
             contenido.appendChild(span);
             //Borrar consultas una vez realizadas para que no se pisen entre si
         }
+
+        devolver = a.length;
     }
+
+    return devolver;
 }
 
 for (const contenedorCant of contenedoresCants) {
@@ -112,10 +123,10 @@ for (const contenedorCant of contenedoresCants) {
             data: {"idReserva": contenedorCant.getAttribute("id")},
             success: function(response) {
                 let resultado = JSON.parse(response);
-                procesarResultado('entradas', resultado);
-                procesarResultado('entradasEspeciales', resultado);
-                procesarResultado('variedades', resultado);
-                procesarResultado('variedadesExtra', resultado);
+                document.getElementById("numeroEntradas").innerHTML = procesarResultado('entradas', resultado);
+                document.getElementById("numeroEntradasEspeciales").innerHTML = procesarResultado('entradasEspeciales', resultado);
+                document.getElementById("numeroVariedades").innerHTML = procesarResultado('variedades', resultado);
+                document.getElementById("numeroVariedadesExtra").innerHTML = procesarResultado('variedadesExtra', resultado);
             }
         })
     })
@@ -136,6 +147,10 @@ document.getElementById("cerrarModaVarieEntr").addEventListener("click", ()=>{
     eliminarContenido(entradasEspecialesContenido);
     eliminarContenido(variedadesContenido);
     eliminarContenido(variedadesExtraContenido);
+    document.getElementById("numeroEntradas").innerHTML = "";
+    document.getElementById("numeroEntradasEspeciales").innerHTML = "";
+    document.getElementById("numeroVariedades").innerHTML = "";
+    document.getElementById("numeroVariedadesExtra").innerHTML = "";
 })
 
 

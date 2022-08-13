@@ -114,6 +114,8 @@ btnAgregar.addEventListener("click", ()=>{
             'traslado' : document.getElementById("traslado").value,
             'seña' : document.getElementById("seña").value,
             'cantVariedades' : document.getElementById("cantVariedades").value,
+            'cantEntradas' : document.getElementById("cantEntradas").value,
+            'cantEntradasEspeciales' : document.getElementById("cantEntradasEspeciales").value,
             'entradas' : entr,
             'entradasEspeciales' : entrEspeciales,
             'variedades' : varie,

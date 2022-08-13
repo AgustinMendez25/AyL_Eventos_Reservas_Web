@@ -513,6 +513,10 @@ rect {
     padding: 14px;
 }
 
+#contenidoVarieEntr p {
+    display:inline-block;
+}
+
 /*Cartel no eventos*/
 
 .div-noEventos {

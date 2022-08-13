@@ -12,6 +12,8 @@
         $cantChicos = $_POST['cantChicos'];
         $cantAdultos = $_POST['cantAdultos'];
         $cantVariedades = $_POST['cantVariedades'];
+        $cantEntradas = $_POST['cantEntradas'];
+        $cantEntradasEspeciales = $_POST['cantEntradasEspeciales'];
         if($precio == null){ $precio = 0; }
         if($traslado == null){ $traslado = 0; }
         if($seña == null){ $seña = 0; }
@@ -20,6 +22,8 @@
         if($cantChicos == null){ $cantChicos = 0; }
         if($cantAdultos == null){ $cantAdultos = 0; }
         if($cantVariedades == null){ $cantVariedades = 0; }
+        if($cantEntradas == null){ $cantEntradas = 0; }
+        if($cantEntradasEspeciales == null){ $cantEntradasEspeciales = 0; }
         
         $query2 = "";
         if ( $_POST['idCliente'] == ""){ //Crear cliente y subir registro de reserva
@@ -87,33 +91,11 @@
         }
 
         if ($_POST['variedades']== "" and $_POST['variedadesExtra']== "" and $_POST['cantVariedades'] != 0) {
-            $query = "";
-            switch ($_POST['cantVariedades']) {
-                case 6:
-                    $query = "INSERT into variedadesreserva(idReserva, idVariedad) values
-                    (".$idRes.",1),(".$idRes.",2),(".$idRes.",4),(".$idRes.",5),(".$idRes.",10),(".$idRes.",11)";
-                    break;
-                case 8:
-                    $query = "INSERT into variedadesreserva(idReserva, idVariedad) values 
-                    (".$idRes.",1),(".$idRes.",2),(".$idRes.",4),(".$idRes.",5),(".$idRes.",10),(".$idRes.",11),(".$idRes.",17),(".$idRes.",7)";
-                    break;
-                case 10:
-                    $query = "INSERT into variedadesreserva(idReserva, idVariedad) values
-                    (".$idRes.",1),(".$idRes.",2),(".$idRes.",4),(".$idRes.",5),(".$idRes.",10),(".$idRes.",11),(".$idRes.",17),(".$idRes.",7),(".$idRes.",6),(".$idRes.",12)";
-                    break;
-                case 12:
-                    $query = "INSERT into variedadesreserva(idReserva, idVariedad) values
-                    (".$idRes.",1),(".$idRes.",2),(".$idRes.",4),(".$idRes.",5),(".$idRes.",10),(".$idRes.",11),(".$idRes.",17),(".$idRes.",7),(".$idRes.",6),(".$idRes.",12),(".$idRes.",13),(".$idRes.",3)";
-                    break;
-                case 14:
-                    $query = "INSERT into variedadesreserva(idReserva, idVariedad) values
-                    (".$idRes.",1),(".$idRes.",2),(".$idRes.",4),(".$idRes.",5),(".$idRes.",10),(".$idRes.",11),(".$idRes.",17),(".$idRes.",7),(".$idRes.",6),(".$idRes.",12),(".$idRes.",13),(".$idRes.",3),(".$idRes.",8),(".$idRes.",9)";
-                    break;
-                case 16:
-                    $query = "INSERT into variedadesreserva(idReserva, idVariedad) values
-                    (".$idRes.",1),(".$idRes.",2),(".$idRes.",4),(".$idRes.",5),(".$idRes.",10),(".$idRes.",11),(".$idRes.",17),(".$idRes.",7),(".$idRes.",6),(".$idRes.",12),(".$idRes.",13),(".$idRes.",3),(".$idRes.",8),(".$idRes.",9),(".$idRes.",14),(".$idRes.",15)";
-                    break;
-                }
+            $query = "INSERT into variedadesreserva(idReserva, idVariedad) values ";
+            for ($i=0; $i < $_POST['cantVariedades']; $i++) { 
+                $query = $query."(".$idRes.",99),";
+            }
+            $query = rtrim($query, ",");
             $envio = $conexion->query($query);
         }else{
             if(isset($_POST['variedades']) and $_POST['variedades']!= ""){
@@ -139,26 +121,45 @@
             }
         }
 
-        if(isset($_POST['entradas']) and $_POST['entradas']!= ""){
-            $query3 = "INSERT into entradasreserva(idReserva, idEntrada) values ";
-            $entradas = explode(",",$_POST['entradas']);
-            for ($x = 0; $x < count($entradas); $x++) {
-                $query3 = $query3."(".$idRes.", ".$entradas[$x]."), ";
+        if ($_POST['entradas']== "" and $_POST['entradasEspeciales']== "" and ($_POST['cantEntradas'] != 0 or $_POST['cantEntradasEspeciales'] != 0)) {
+            if ($_POST['cantEntradas'] != 0) {
+                $query = "INSERT into entradasreserva(idReserva, idEntrada) values ";
+                for ($i=0; $i < $_POST['cantEntradas']; $i++) { 
+                    $query = $query."(".$idRes.",99),";
+                }
+                $query = rtrim($query, ",");
+                $envio = $conexion->query($query);
+            }  
+            if ($_POST['cantEntradasEspeciales'] != 0) {
+                $query = "INSERT into entradasespecialesreserva(idReserva, idEntradaEspecial) values ";
+                for ($i=0; $i < $_POST['cantEntradasEspeciales']; $i++) { 
+                    $query = $query."(".$idRes.",99),";
+                }
+                $query = rtrim($query, ",");
+                $envio = $conexion->query($query);
+            }          
+        }else{
+            if(isset($_POST['entradas']) and $_POST['entradas']!= ""){
+                $query3 = "INSERT into entradasreserva(idReserva, idEntrada) values ";
+                $entradas = explode(",",$_POST['entradas']);
+                for ($x = 0; $x < count($entradas); $x++) {
+                    $query3 = $query3."(".$idRes.", ".$entradas[$x]."), ";
+                }
+                $query3 = rtrim($query3,", ");
+    
+                $envio3 = $conexion->query($query3);
             }
-            $query3 = rtrim($query3,", ");
-
-            $envio3 = $conexion->query($query3);
-        }
-
-        if(isset($_POST['entradasEspeciales']) and $_POST['entradasEspeciales']!= ""){
-            $query4 = "INSERT into entradasespecialesreserva(idReserva, idEntradaEspecial) values ";
-            $entradas = explode(",",$_POST['entradasEspeciales']);
-            for ($x = 0; $x < count($entradas); $x++) {
-                $query4 = $query4."(".$idRes.", ".$entradas[$x]."), ";
+    
+            if(isset($_POST['entradasEspeciales']) and $_POST['entradasEspeciales']!= ""){
+                $query4 = "INSERT into entradasespecialesreserva(idReserva, idEntradaEspecial) values ";
+                $entradas = explode(",",$_POST['entradasEspeciales']);
+                for ($x = 0; $x < count($entradas); $x++) {
+                    $query4 = $query4."(".$idRes.", ".$entradas[$x]."), ";
+                }
+                $query4 = rtrim($query4,", ");
+    
+                $envio3 = $conexion->query($query4);
             }
-            $query4 = rtrim($query4,", ");
-
-            $envio3 = $conexion->query($query4);
         }
 
         echo true;

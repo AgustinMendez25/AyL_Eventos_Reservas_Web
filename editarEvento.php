@@ -70,9 +70,13 @@
                 <input type="number" id="traslado" placeholder="Traslado" value="<?php echo $row['traslado'] ?>">
                 <input type="number" id="seña" id="seña" placeholder="Seña" value="<?php echo $row['seña'] ?>">
                 
-                <h5>Variedades y Entradas</h5>
+                <h5>Variedades</h5>
                 <input type="number" id="cantVariedades" placeholder="Cantidad Variedades">
                 <input type="button" class="botonInput" id="btnVariedades" value="Variedades">
+
+                <h5>Entradas</h5>
+                <input type="number" id="cantEntradas" placeholder="Cantidad Entradas">
+                <input type="number" id="cantEntradasEspeciales" placeholder="Cantidad Entradas Especiales">
                 <input type="button" class="botonInput" id="btnEntradas" value="Entradas">
 
                 <!--Modal Variedades-->
@@ -85,7 +89,7 @@
                         <div class="contenido">
                             <h5>Variedades Comunes</h5>
                             <?php //PHP VARIEDADES
-                                $query = "SELECT * FROM variedades";
+                                $query = "SELECT * FROM variedades where id != 99";
                                 $envio = $conexion->query($query);
                                 while($row=$envio->fetch_assoc()){
                             ?>
@@ -113,7 +117,7 @@
                         <div class="contenido">
                             <h5>Entradas Comunes</h5>
                             <?php //PHP ENTRADAS
-                                $query = "SELECT * FROM entradas";
+                                $query = "SELECT * FROM entradas  where id != 99";
                                 $envio = $conexion->query($query);
                                 while($row=$envio->fetch_assoc()){
                             ?>
@@ -121,7 +125,7 @@
                             <?php } ?>
                             <h5>Entradas Especiales</h5>
                             <?php //PHP ENTRADAS
-                                $query = "SELECT * FROM entradasespeciales";
+                                $query = "SELECT * FROM entradasespeciales where id != 99";
                                 $envio = $conexion->query($query);
                                 while($row=$envio->fetch_assoc()){
                             ?>
@@ -142,7 +146,7 @@
     <!--JS-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="assets/js/modal.js"></script>
-    <script src="assets/js/seleccionar.js"></script> 
+    <script src="assets/js/seleccionar-agregar.js"></script> 
     <script src="assets/js/seleccionarUpdate.js"></script> 
 
 </body>
