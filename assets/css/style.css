@@ -246,11 +246,10 @@ rect {
     display: flex;
     padding: 10px;
     background-color: rgb(5, 164, 169);
-    position: relative;
+    position: absolute;
     width: 75%;
-    top: -200px;
+    top: -220px;
     z-index: 0;
-    height: 0px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     visibility: hidden;
@@ -292,34 +291,17 @@ rect {
 }
 
 @keyframes desplazarInfo {
-    30% {top:0px;height: var(--alturaInfo);}
-    100% {top:0px;height: var(--alturaInfo);}
+    0% {top:-220px;}
+    100% {top:0px;}
 }
 @keyframes cerrarInfo {
-    0% {top:0px; height: var(--alturaInfo);}
-    50% {height: var(--alturaInfo);}
-    100% {top:-200px;height: 0px}
+    0% {top:0px;}
+    100% {top:-220px;}
 }
 @keyframes aparecerTexto {
     0% {opacity: 0;}
     80% {opacity: 1;}
     100% {opacity: 1;}
-}
-
-@media (min-width: 386px) { 
-    :root {
-        --alturaInfo: 150px;
-    }
-}
-@media (min-width: 500px) { 
-    :root {
-        --alturaInfo: 130px;
-    }
-}
-@media (min-width: 780px) { 
-    :root {
-        --alturaInfo: 98px;
-    }
 }
 
 
@@ -490,6 +472,7 @@ rect {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     overflow-y: scroll;
+    position: relative;
 }
 
 .modal .modal-caja .contenido span, .modal .modal-caja .contenido button{

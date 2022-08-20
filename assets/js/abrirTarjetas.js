@@ -16,8 +16,9 @@ for (const tarjeta of tarjetas) {
         if (tarjetaInfo.style.top == "0px"){
             tarjetaEditarBtn.style.display = "none";
             tarjetaEliminarBtn.style.display = "none";
-            tarjetaInfo.style.animation = "cerrarInfo 1s forwards";
+            tarjetaInfo.style.animation = "cerrarInfo 0.8s forwards";
             const tiempo = setTimeout(()=>{
+                tarjetaInfo.style.position = "absolute";
                 tarjetaInfo.style.top = "-100px";
                 tarjetaInfo.style.visibility = "hidden";
                 tarjetaInfoTexto1.style.animation = "";
@@ -40,10 +41,11 @@ for (const tarjeta of tarjetas) {
                     
                 }
             })
-            tarjetaInfo.style.animation = "desplazarInfo 1s forwards";
+            tarjetaInfo.style.animation = "desplazarInfo 0.8s forwards";
             tarjetaInfo.style.visibility = "visible";
             tarjetaInfoTexto1.style.animation = "aparecerTexto 2s forwards";
             tarjetaInfoTexto2.style.animation = "aparecerTexto 2s forwards";
+            tarjetaInfo.style.position = "relative";
             const tiempo = setTimeout(()=>{tarjetaInfo.style.top = "0px"},800);
         }
     });

@@ -79,11 +79,16 @@
                         <input type="number" id="cantChicos" value="0">
                     </div>
                 </div>
-                <input type="text" id="localidad" placeholder="Localidad">
-                <input type="text" id="direccion" placeholder="Dirección">
-                <input type="number" id="precio" placeholder="Precio">
-                <input type="number" id="traslado" placeholder="Traslado">
-                <input type="number" id="seña" id="seña" placeholder="Seña">
+                <label>Localidad</label>
+                <input type="text" id="localidad" style="margin:5px 0 10px 0" placeholder="Localidad">
+                <label>Dirección</label>
+                <input type="text" id="direccion" style="margin:5px 0 10px 0" placeholder="Dirección">
+                <label>Precio</label>
+                <input type="number" id="precio" style="margin:5px 0 10px 0" placeholder="Precio">
+                <label>Traslado</label>
+                <input type="number" id="traslado" style="margin:5px 0 10px 0" placeholder="Traslado">
+                <label>Seña</label>
+                <input type="number" id="seña" id="seña" style="margin:5px 0 10px 0" placeholder="Seña">
                 
                 <h5>Variedades</h5>
                 <input type="number" id="cantVariedades" placeholder="Cantidad Variedades">

@@ -64,11 +64,16 @@
                         <input type="number" id="cantChicos" value="<?php echo $row['cantChicos'] ?>">
                     </div>
                 </div>
-                <input type="text" id="localidad" placeholder="Localidad" value="<?php echo $row['localidad'] ?>">
-                <input type="text" id="direccion" placeholder="Dirección" value="<?php echo $row['direccion'] ?>">
-                <input type="number" id="precio" placeholder="Precio" value="<?php echo $row['precio'] ?>">
-                <input type="number" id="traslado" placeholder="Traslado" value="<?php echo $row['traslado'] ?>">
-                <input type="number" id="seña" id="seña" placeholder="Seña" value="<?php echo $row['seña'] ?>">
+                <label>Localidad</label>
+                <input type="text" id="localidad" style="margin:5px 0 10px 0" placeholder="Localidad" value="<?php echo $row['localidad'] ?>">
+                <label>Dirección</label>
+                <input type="text" id="direccion" style="margin:5px 0 10px 0" placeholder="Dirección" value="<?php echo $row['direccion'] ?>">
+                <label>Precio</label>
+                <input type="number" id="precio" style="margin:5px 0 10px 0" placeholder="Precio" value="<?php echo $row['precio'] ?>">
+                <label>Traslado</label>
+                <input type="number" id="traslado" style="margin:5px 0 10px 0" placeholder="Traslado" value="<?php echo $row['traslado'] ?>">
+                <label>Seña</label>
+                <input type="number" id="seña" id="seña" style="margin:5px 0 10px 0" placeholder="Seña" value="<?php echo $row['seña'] ?>">
                 
                 <h5>Variedades</h5>
                 <input type="number" id="cantVariedades" placeholder="Cantidad Variedades">
