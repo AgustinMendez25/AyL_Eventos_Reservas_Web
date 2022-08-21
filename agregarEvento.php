@@ -154,6 +154,8 @@
                         </div>
                     </div>
                 </div>
+                <h5>Comentarios Adicionales</h5>
+                <textarea id="infoAdicional" cols="30" rows="10" maxlenght="500"></textarea>
                 <div class="div-acciones">
                     <a href="tabla.php"><input type="button" id="btn-cancelar" value="Cancelar"></a>
                     <input type="submit" name="btn-agregar" id="btn-agregar" value="Agregar">

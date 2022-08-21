@@ -12,11 +12,22 @@ for (const tarjeta of tarjetas) {
     const tarjetaEditarBtn = tarjeta.firstElementChild.firstElementChild;
     const tarjetaEliminarBtn = tarjeta.firstElementChild.firstElementChild.nextElementSibling;
 
+
+    const comentarios = tarjeta.nextElementSibling;
+
+    const btnComentarios = comentarios.firstElementChild;
+    const comentariosContenido = comentarios.lastElementChild;
+
     tarjeta.addEventListener("click",()=>{
         if (tarjetaInfo.style.top == "0px"){
             tarjetaEditarBtn.style.display = "none";
             tarjetaEliminarBtn.style.display = "none";
             tarjetaInfo.style.animation = "cerrarInfo 0.8s forwards";
+            btnComentarios.style.visibility = "hidden";
+            btnComentarios.style.animation = "esconderBtn 1s forwards";
+            comentariosContenido.style.animation = "cerrarComentario 1.5s ease-in-out forwards";
+            comentariosContenido.style.visibility = "hidden";
+            comentariosContenido.setAttribute("value","0");
             const tiempo = setTimeout(()=>{
                 tarjetaInfo.style.position = "absolute";
                 tarjetaInfo.style.top = "-100px";
@@ -24,6 +35,7 @@ for (const tarjeta of tarjetas) {
                 tarjetaInfoTexto1.style.animation = "";
                 tarjetaInfoTexto2.style.animation = "";
             },800);
+            
         }else{
             tarjetaEditarBtn.style.display = "inline-block";
             tarjetaEliminarBtn.style.display = "inline-block";
@@ -46,9 +58,26 @@ for (const tarjeta of tarjetas) {
             tarjetaInfoTexto1.style.animation = "aparecerTexto 2s forwards";
             tarjetaInfoTexto2.style.animation = "aparecerTexto 2s forwards";
             tarjetaInfo.style.position = "relative";
-            const tiempo = setTimeout(()=>{tarjetaInfo.style.top = "0px"},800);
+            const tiempo = setTimeout(()=>{
+                tarjetaInfo.style.top = "0px";
+                btnComentarios.style.visibility = "visible";
+                btnComentarios.style.animation = "mostrarBtn 1s forwards";
+            },800);
         }
     });
+
+    btnComentarios.addEventListener("click",()=>{
+        if (comentariosContenido.getAttribute("value") == "0") {
+            comentariosContenido.style.animation = "desplazarComentario 1.5s ease-in-out forwards";
+            comentariosContenido.style.visibility = "visible";
+            comentariosContenido.setAttribute("value","1");
+        }else{
+            comentariosContenido.style.animation = "cerrarComentario 1.5s ease-in-out forwards";
+            comentariosContenido.setAttribute("value","0");
+        }
+        
+    });
+
 }
 
 const contenedoresCants = document.querySelectorAll(".contenedorCants");

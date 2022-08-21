@@ -82,7 +82,7 @@
                             break;
                     }
                 }
-                $query = "select fecha,r.idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio,traslado,seña,nombre,mail,telefono, ((select count(*) from entradasreserva er where er.idReserva = r.idReserva) + (select count(*) from entradasespecialesreserva esr where esr.idReserva = r.idReserva)) as cantEntradas,
+                $query = "select fecha,r.idReserva,localidad,cantAdultos,cantChicos,direccion,infoAdicional,horario,hora,precio,traslado,seña,nombre,mail,telefono, ((select count(*) from entradasreserva er where er.idReserva = r.idReserva) + (select count(*) from entradasespecialesreserva esr where esr.idReserva = r.idReserva)) as cantEntradas,
                 ((select count(*) from variedadesreserva vr where vr.idReserva = r.idReserva) + (select count(*) from variedadesextrareserva vxr where vxr.idReserva = r.idReserva)) as cantVariedades
                 from reserva r inner join cliente c on r.idCliente = c.idCliente
                 " . $where . "
@@ -154,6 +154,13 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="comentariosTarjeta">
+                <i id="btnAbrirComentarios" class="fas fa-chevron-down"></i>
+                <div class="comentariosContenido" value="0">
+                    <h4>Información Adicional</h4>
+                    <p><?php if($row['infoAdicional'] != null){echo $row['infoAdicional'];}else{echo 'No hay información adicional';} ?></p>
                 </div>
             </div>
             <script>

@@ -34,7 +34,7 @@
             <h4>Editar Evento</h4>
             <div class="form">
                 <?php
-                    $query = "select fecha,idReserva,localidad,cantAdultos,cantChicos,direccion,horario,hora,precio,traslado,seña,nombre from reserva r inner join cliente c on r.idCliente = c.idCliente where idReserva = ".$_GET['id'];
+                    $query = "select fecha,idReserva,localidad,cantAdultos,cantChicos,direccion,infoAdicional,horario,hora,precio,traslado,seña,nombre from reserva r inner join cliente c on r.idCliente = c.idCliente where idReserva = ".$_GET['id'];
                     $envio = $conexion->query($query);
                     while($row=$envio->fetch_assoc()){
 
@@ -83,6 +83,9 @@
                 <input type="number" id="cantEntradas" placeholder="Cantidad Entradas">
                 <input type="number" id="cantEntradasEspeciales" placeholder="Cantidad Entradas Especiales">
                 <input type="button" class="botonInput" id="btnEntradas" value="Entradas">
+
+                <h5>Comentarios Adicionales</h5>
+                <textarea id="infoAdicional" cols="30" rows="10" maxlenght="500"><?php if($row['infoAdicional'] != null){echo $row['infoAdicional'];}?></textarea>
 
                 <!--Modal Variedades-->
                 <div class="modal" id="modalVariedades">

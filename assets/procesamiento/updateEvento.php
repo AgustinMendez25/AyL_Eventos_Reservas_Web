@@ -36,7 +36,8 @@
             direccion = '".$direccion."',
             precio = ".$precio.",
             traslado = ".$traslado.",
-            seña = ".$seña."
+            seña = ".$seña.",
+            infoAdicional = '".$_POST['infoAdicional']."'
             where idReserva = ".$idRes
         ;
         

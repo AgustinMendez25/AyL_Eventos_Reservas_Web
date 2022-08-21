@@ -25,6 +25,7 @@ btnUpdate.addEventListener("click", ()=>{
             'precio' : document.getElementById("precio").value,
             'traslado' : document.getElementById("traslado").value,
             'seña' : document.getElementById("seña").value,
+            'infoAdicional' : document.getElementById("infoAdicional").value,
             'cantVariedades' : document.getElementById("cantVariedades").value,
             'cantEntradas' : document.getElementById("cantEntradas").value,
             'cantEntradasEspeciales' : document.getElementById("cantEntradasEspeciales").value,

@@ -41,7 +41,8 @@
                 direccion,
                 precio,
                 traslado,
-                seña) values(
+                seña,
+                infoAdicional) values(
                 (select max(idCliente) as idCliente from cliente),
                 '".$_POST['fecha']."',
                 '".$_POST['horario']."',
@@ -52,7 +53,8 @@
                 '".$direccion."',
                 ".$precio.",
                 ".$traslado.",
-                ".$seña."
+                ".$seña.",
+                '".$_POST['infoAdicional']."'
                 )";
         }else{ //Usar cliente existente y subir registro de reserva
             $query2 = "insert into reserva(
@@ -66,7 +68,8 @@
                 direccion,
                 precio,
                 traslado,
-                seña) values(
+                seña,
+                infoAdicional) values(
                 ".$_POST['idCliente'].",
                 '".$_POST['fecha']."',
                 '".$_POST['horario']."',
@@ -77,7 +80,8 @@
                 '".$direccion."',
                 ".$precio.",
                 ".$traslado.",
-                ".$seña."
+                ".$seña.",
+                '".$_POST['infoAdicional']."'
                 )";
         }
 
